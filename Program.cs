@@ -10,5 +10,6 @@ namespace grab_the_cheese
             Game game = new Game(default(Board), default(GameConfig));
             game.StartGame();
         }
+
     }
 }

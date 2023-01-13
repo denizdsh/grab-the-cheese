@@ -1,4 +1,6 @@
-﻿using System;
+﻿using grab_the_cheese.game;
+using grab_the_cheese.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,41 @@ namespace grab_the_cheese
 
         private static readonly int marginalLength = 35;
         private static readonly int lineSpacing = 2;
+
+        public void PrintGameBoard(Board board)
+        {
+            IFieldEntity[,] field = board.Field;
+
+            int fieldLength = field.GetLength(0);
+
+            // Header Print
+            Console.WriteLine(MultiplyString(headerSymbol, fieldLength * 2 + 1));
+
+            // Line print
+            for (int i = 0; i < fieldLength; i++)
+            {
+                Console.Write(lineSymbol);
+                for (int j = 0; j < fieldLength; j++)
+                {
+                    if (field[i, j] == null)
+                    {
+                        Console.Write(" ");
+                    } else
+                    {
+                        field[i, j].PrintDisplayValue();
+                    }
+
+                    if (j != fieldLength - 1)
+                    {
+                        Console.Write("|");
+                    }
+                }
+                Console.WriteLine(lineSymbol);
+            }
+
+            // Footer Print
+            Console.WriteLine(MultiplyString(headerSymbol, field.GetLength(0) * 2 + 1));
+        }
 
         public void PrintMenuConfig()
         {
