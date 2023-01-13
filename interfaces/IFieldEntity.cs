@@ -2,6 +2,6 @@
 {
     internal interface IFieldEntity
     {
-        string GetDisplayValue();
+        void PrintDisplayValue();
     }
 }
