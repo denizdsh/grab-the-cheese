@@ -52,6 +52,18 @@ namespace grab_the_cheese
             Console.WriteLine(MultiplyString(headerSymbol, field.GetLength(0) * 2 + 1));
         }
 
+        public void PrintGameChoiceMenu()
+        {
+            string text = @"
+Choose a difficulty
+
+1 - Easy
+2 - Normal
+3 - Hard
+4 - Master Splinter
+";
+        }
+
         public void PrintMenuConfig()
         {
             string text = @"Welcome to the MISHOKOVA game
