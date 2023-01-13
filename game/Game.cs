@@ -1,18 +1,19 @@
 ﻿using grab_the_cheese.enums;
 using grab_the_cheese.game.FieldEntities;
+using grab_the_cheese.interfaces;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace grab_the_cheese.game
 {
     internal class Game
     {
+        private readonly Type[] collectableTypes = new Type[] {
+            typeof(Chedar),
+            typeof(Emental),
+            typeof(Gorgonzola)
+        };
+
         public Board Board { get; private set; }
         public GameConfig Config { get; private set; }
         public double Score { get; private set; }
@@ -58,16 +59,12 @@ namespace grab_the_cheese.game
             Console.Clear();
 
             // Configure and start game
-            GameConfig config = new GameConfig(BoardSize.MasterSplinterHideout, difficulty);
-            Board = new Board(config.BoardSize);
-
-            StartGame();
+            this.Config = new GameConfig(BoardSize.MasterSplinterHideout, difficulty);
+            Board = new Board(Config.BoardSize);
         }
 
         public void StartGame()
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-
             Board.SpawnEntity(new Player());
             Board.SpawnEntity(new Chedar());
 
@@ -123,12 +120,51 @@ namespace grab_the_cheese.game
                     throw new ArgumentException("Invalid key");
             }
 
-            if (Board.Field[newPos.Y, newPos.X] is Collectable collectable)
+            bool GrabbedTheCheese = false;
+
+            IFieldEntity nextMoveEntity = Board.Field[newPos.Y, newPos.X];
+
+            if (nextMoveEntity is Collectable collectable)
             {
+                GrabbedTheCheese = true;
                 UpdateScore(collectable.Points);
+            }
+            else if (nextMoveEntity is IEnemyEntity)
+            {
+                EndGame();
             }
 
             Board.MakePlayerMove(newPos, currentPos);
+
+            if (GrabbedTheCheese)
+            {
+                Board.SpawnEntityAt(new Poop(), currentPos);
+
+                SpawnRandomCollectables();
+            }
+        }
+
+        private void SpawnRandomCollectables()
+        {
+            Random random = new Random();
+
+            int collectablesSpawnsCount = Config.BoardSize >= BoardSize.Large
+                ? 2
+                : 1;
+
+            for (int i = 1; i <= collectablesSpawnsCount; i++)
+            {
+                int idx = random.Next(0, this.collectableTypes.Length);
+                Board.SpawnEntity((IFieldEntity)Activator.CreateInstance(this.collectableTypes[idx]));
+            }
+        }
+
+        private void EndGame()
+        {
+            Console.WriteLine("Died! :(");
+            Console.WriteLine("Score: " + Score);
+
+            throw new Exception("DEAD");
         }
 
         private void UpdateScore(int points)

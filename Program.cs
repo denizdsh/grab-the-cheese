@@ -10,6 +10,7 @@ namespace grab_the_cheese
         {
             Game game = new Game();
             game.ConfigureGame();
+            game.StartGame();
         }
     }
 }

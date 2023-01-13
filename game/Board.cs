@@ -26,25 +26,79 @@ namespace grab_the_cheese.game
 
         public Point FindPlayerPosition()
         {
+            return FindPositionOf<Player>(new InvalidOperationException("Player not found"));
+        }
 
+        private Point FindPositionOf<T>()
+        {
+            return FindPositionOf<T>(new InvalidOperationException("Not found"));
+        }
+
+        private Point FindPositionOf<T>(T obj) where T : IFieldEntity
+        {
+            return FindPositionOf<T>(new InvalidOperationException("Not found"), obj);
+        }
+
+        private Point FindPositionOf<T>(Exception ex)
+        {
             for (int y = 0; y < Size; y++)
             {
                 for (int x = 0; x < Size; x++)
                 {
-                    if (Field[y, x] is Player)
+                    if (Field[y, x] is T)
                     {
                         return new Point(x, y);
                     }
                 }
             }
 
-            throw new InvalidOperationException("Player not found");
+            throw ex;
+        }
+        private Point FindPositionOf<T>(Exception ex, T obj) where T : IFieldEntity
+        {
+            IFieldEntity item = obj;
+
+            for (int y = 0; y < Size; y++)
+            {
+                for (int x = 0; x < Size; x++)
+                {
+                    if (Field[y, x] == item)
+                    {
+                        return new Point(x, y);
+                    }
+                }
+            }
+
+            throw ex;
+        }
+
+        private bool IsBoardFull()
+        {
+            try
+            {
+                FindPositionOf<IFieldEntity>(default(IFieldEntity));
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return true;
+            }
         }
 
         public void SpawnEntity(IFieldEntity entity)
         {
+            if (IsBoardFull())
+            {
+                return;
+            }
+
             Point position = GenerateRandomPosition();
 
+            SpawnEntityAt(entity, position);
+        }
+
+        public void SpawnEntityAt(IFieldEntity entity, Point position)
+        {
             Field[position.Y, position.X] = entity;
         }
 
@@ -67,7 +121,7 @@ namespace grab_the_cheese.game
                 throw new ArgumentException("Position outside of board");
             }
 
-            if (Field[position.X, position.Y] is not null
+            if (Field[position.Y, position.X] is not null
                 && !isPlayer)
             {
                 throw new ArgumentException($"There is already an item on position {{X: {position.X}; Y: {position.Y} }}");
