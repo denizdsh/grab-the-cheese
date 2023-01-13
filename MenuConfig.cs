@@ -35,7 +35,8 @@ namespace grab_the_cheese
                     if (field[i, j] == null)
                     {
                         Console.Write(" ");
-                    } else
+                    }
+                    else
                     {
                         field[i, j].PrintDisplayValue();
                     }
@@ -62,6 +63,9 @@ Choose a difficulty
 3 - Hard
 4 - Master Splinter
 ";
+            text = BuildTextBlock(text);
+
+            Console.WriteLine(text);
         }
 
         public void PrintMenuConfig()
@@ -92,7 +96,7 @@ Press ENTER to start a new game
             string footer = BuildFooter();
             string lineSeparator = BuildLineSeparator();
 
-            string appendedText = string.Join("\n", 
+            string appendedText = string.Join("\n",
                 textBlock
                 .Split("\n")
                 .Select(x => lineSeparator + x));

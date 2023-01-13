@@ -7,7 +7,7 @@ namespace grab_the_cheese.game.FieldEntities
     {
         public void PrintDisplayValue()
         {
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("M");
             Console.ResetColor();
         }

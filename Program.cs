@@ -1,4 +1,5 @@
 ﻿using grab_the_cheese.game;
+using grab_the_cheese.enums;
 using System;
 
 namespace grab_the_cheese
@@ -7,9 +8,8 @@ namespace grab_the_cheese
     {
         static void Main(string[] args)
         {
-            Game game = new Game(default(Board), default(GameConfig));
-            game.StartGame();
+            Game game = new Game();
+            game.ConfigureGame();
         }
-
     }
 }
