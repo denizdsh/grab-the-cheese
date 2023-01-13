@@ -1,4 +1,5 @@
-﻿using System;
+﻿using grab_the_cheese.game;
+using System;
 
 namespace grab_the_cheese
 {
@@ -6,7 +7,8 @@ namespace grab_the_cheese
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game(default(Board), default(GameConfig));
+            game.StartGame();
         }
     }
 }
