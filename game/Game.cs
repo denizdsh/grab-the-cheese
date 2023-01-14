@@ -14,21 +14,24 @@ namespace grab_the_cheese.game
             typeof(Gorgonzola)
         };
 
-        public Board Board { get; private set; }
-        public GameConfig Config { get; private set; }
+        private Board Board { get; set; }
+        private GameConfig Config { get; set; }
         public double Score { get; private set; }
-
-        public MenuConfig Menu { get; private set; }
+        private MenuConfig Menu { get; set; }
+        private JsonFileOperationService<Statistics> StatisticsService { get; set; }
 
         public Game()
         {
             Menu = new MenuConfig();
+            StatisticsService = new JsonFileOperationService<Statistics>(
+                "../../../statistics.json",
+                () => new Statistics());
         }
 
         public void ConfigureGame()
         {
             // Start menu
-            Menu.PrintMenuConfig();
+            Menu.PrintMenuConfig(StatisticsService.GetObject());
 
             while (true)
             {
@@ -177,6 +180,8 @@ namespace grab_the_cheese.game
             Menu.PrintEndGameMessage(Score);
             Menu.PrintGameBoard(Board);
 
+            UpdateStatistics();
+
             ResetGame();
 
             throw new ApplicationException("You have died");
@@ -192,6 +197,16 @@ namespace grab_the_cheese.game
         private void UpdateScore(int points)
         {
             Score += points;
+        }
+
+        private void UpdateStatistics()
+        {
+            Statistics statistics = StatisticsService.GetObject();
+
+            statistics.TotalGames++;
+            statistics.Score += Score;
+
+            StatisticsService.UpdateObject(statistics);
         }
     }
 }

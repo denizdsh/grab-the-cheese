@@ -92,14 +92,14 @@ Choose a difficulty
             Console.WriteLine(text);
         }
 
-        public void PrintMenuConfig()
+        public void PrintMenuConfig(Statistics statistics)
         {
-            string text = @"Welcome to the MISHOKOVA game
+            string text = $@"Welcome to the MISHOKOVA game
 
 ↓↓↓↓↓ CURRENT STATISTICS ↓↓↓↓↓
 
-Total games: 0
-Points collected: 0
+Total games: {statistics.TotalGames}
+Points collected: {statistics.Score}
 
 ↑↑↑↑↑ CURRENT STATISTICS ↑↑↑↑↑
 
