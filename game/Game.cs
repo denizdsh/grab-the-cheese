@@ -68,6 +68,7 @@ namespace grab_the_cheese.game
             Board.SpawnEntity(new Player());
             Board.SpawnEntity(new Chedar());
 
+            Menu.PrintGameMessage(Score);
             Menu.PrintGameBoard(Board);
 
             while (true)
@@ -87,7 +88,7 @@ namespace grab_the_cheese.game
                 catch { continue; }
 
                 Console.Clear();
-
+                Menu.PrintGameMessage(Score);
                 Menu.PrintGameBoard(Board);
             }
         }
@@ -161,10 +162,11 @@ namespace grab_the_cheese.game
 
         private void EndGame()
         {
-            Console.WriteLine("Died! :(");
-            Console.WriteLine("Score: " + Score);
+            Console.Clear();
+            Menu.PrintEndGameMessage(Score);
+            Menu.PrintGameBoard(Board);
 
-            throw new Exception("DEAD");
+            throw new ApplicationException("You have died");
         }
 
         private void UpdateScore(int points)

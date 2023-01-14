@@ -14,7 +14,7 @@ namespace grab_the_cheese
         private static readonly string footerSymbol = "*";
         private static readonly string lineSymbol = "|";
 
-        private static readonly int marginalLength = 35;
+        private static readonly int marginalLength = 25;
         private static readonly int lineSpacing = 2;
 
         public void PrintGameBoard(Board board)
@@ -24,7 +24,7 @@ namespace grab_the_cheese
             int fieldLength = field.GetLength(0);
 
             // Header Print
-            Console.WriteLine(MultiplyString(headerSymbol, fieldLength * 2 + 1));
+            Console.WriteLine(MultiplyString("-", fieldLength * 2 + 1));
 
             // Line print
             for (int i = 0; i < fieldLength; i++)
@@ -50,7 +50,34 @@ namespace grab_the_cheese
             }
 
             // Footer Print
-            Console.WriteLine(MultiplyString(headerSymbol, field.GetLength(0) * 2 + 1));
+            Console.WriteLine(MultiplyString("-", field.GetLength(0) * 2 + 1));
+        }
+
+        public void PrintGameMessage(double score)
+        {
+            string text = $@"
+MOVE WITH THE ARROW KEYS
+TO PLAY
+
+Score {score}
+";
+
+            text = BuildTextBlock(text);
+
+            Console.WriteLine(text);
+        }
+
+        public void PrintEndGameMessage(double score)
+        {
+            string text = $@"
+YOU LOST!
+
+Score: {score}
+";
+
+            text = BuildTextBlock(text);
+
+            Console.WriteLine(text);
         }
 
         public void PrintGameChoiceMenu()
