@@ -1,12 +1,9 @@
-﻿using grab_the_cheese.game;
-using grab_the_cheese.interfaces;
+﻿using grab_the_cheese.interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace grab_the_cheese
+namespace grab_the_cheese.game
 {
     class MenuConfig
     {
@@ -101,8 +98,6 @@ Choose a difficulty
 
 ↓↓↓↓↓ CURRENT STATISTICS ↓↓↓↓↓
 
-Wins: 0
-Loses: 0
 Total games: 0
 Points collected: 0
 

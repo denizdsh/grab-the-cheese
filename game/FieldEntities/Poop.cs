@@ -3,7 +3,7 @@ using System;
 
 namespace grab_the_cheese.game.FieldEntities
 {
-    internal class Poop : IFieldEntity, IEnemyEntity
+    internal class Poop : IFieldEntity
     {
         public void PrintDisplayValue()
         {

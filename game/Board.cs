@@ -26,7 +26,7 @@ namespace grab_the_cheese.game
 
         public Point FindPlayerPosition()
         {
-            return FindPositionOf<Player>(new InvalidOperationException("Player not found"));
+            return FindPositionOf<Player>(new ApplicationException("Player not found"));
         }
 
         private Point FindPositionOf<T>()

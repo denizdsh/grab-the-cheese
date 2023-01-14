@@ -85,12 +85,22 @@ namespace grab_the_cheese.game
                 {
                     UpdatePlayerPosition(key);
                 }
-                catch { continue; }
+                catch (ApplicationException)
+                {
+                    break;
+                }
+                catch
+                {
+                    continue;
+                }
 
                 Console.Clear();
                 Menu.PrintGameMessage(Score);
                 Menu.PrintGameBoard(Board);
             }
+
+            ConfigureGame();
+            StartGame();
         }
 
         public void UpdatePlayerPosition(MovementKey key)
@@ -130,7 +140,7 @@ namespace grab_the_cheese.game
                 GrabbedTheCheese = true;
                 UpdateScore(collectable.Points);
             }
-            else if (nextMoveEntity is IEnemyEntity)
+            else if (nextMoveEntity is Poop)
             {
                 EndGame();
             }
@@ -156,6 +166,7 @@ namespace grab_the_cheese.game
             for (int i = 1; i <= collectablesSpawnsCount; i++)
             {
                 int idx = random.Next(0, this.collectableTypes.Length);
+
                 Board.SpawnEntity((IFieldEntity)Activator.CreateInstance(this.collectableTypes[idx]));
             }
         }
@@ -166,7 +177,16 @@ namespace grab_the_cheese.game
             Menu.PrintEndGameMessage(Score);
             Menu.PrintGameBoard(Board);
 
+            ResetGame();
+
             throw new ApplicationException("You have died");
+        }
+
+        private void ResetGame()
+        {
+            Score = 0;
+            Board = null;
+            Config = null;
         }
 
         private void UpdateScore(int points)
