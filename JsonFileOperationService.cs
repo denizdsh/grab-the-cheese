@@ -8,6 +8,7 @@ namespace grab_the_cheese
     {
         private string FilePath { get; set; }
         private Func<T> GetDefaultValue { get; set; } = () => default(T);
+        private T JsonObject { get; set; }
 
         public JsonFileOperationService(string filePath)
         {
@@ -23,21 +24,32 @@ namespace grab_the_cheese
         {
             string jsonString = JsonSerializer.Serialize<T>(obj);
             File.WriteAllText(FilePath, jsonString);
+
+            JsonObject = obj;
         }
 
         public T GetObject()
         {
+            if (JsonObject == null)
+            {
+                InitializeJsonObject();
+            }
+
+            return JsonObject;
+        }
+
+        private void InitializeJsonObject()
+        {
             try
             {
                 string jsonString = File.ReadAllText(FilePath);
-
                 T obj = JsonSerializer.Deserialize<T>(jsonString);
 
-                return obj;
+                JsonObject = obj;
             }
             catch
             {
-                return GetDefaultValue();
+                JsonObject = GetDefaultValue();
             }
         }
     }
