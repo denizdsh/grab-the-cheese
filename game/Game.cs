@@ -9,7 +9,7 @@ namespace grab_the_cheese.game
     internal class Game
     {
         private readonly Type[] collectableTypes = new Type[] {
-            typeof(Chedar),
+            typeof(Cheddar),
             typeof(Emental),
             typeof(Gorgonzola)
         };
@@ -85,7 +85,7 @@ namespace grab_the_cheese.game
         public void StartGame()
         {
             Board.SpawnEntity(new Player());
-            Board.SpawnEntity(new Chedar());
+            Board.SpawnEntity(new Cheddar());
 
             Menu.PrintGameMessage(Score);
             Menu.PrintGameBoard(Board);

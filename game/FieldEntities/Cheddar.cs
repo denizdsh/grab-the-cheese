@@ -3,9 +3,9 @@ using System;
 
 namespace grab_the_cheese.game.FieldEntities
 {
-    internal class Chedar : Collectable, IFieldEntity
+    internal class Cheddar : Collectable, IFieldEntity
     {
-        public Chedar()
+        public Cheddar()
         {
             Points = 25;
         }
