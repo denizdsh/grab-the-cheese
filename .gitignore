@@ -8,3 +8,4 @@ x64/
 **/packages/*
 !**/packages/build/
 statistics.json
+*.png

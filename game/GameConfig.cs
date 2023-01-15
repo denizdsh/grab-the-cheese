@@ -5,12 +5,10 @@ namespace grab_the_cheese.game
     internal class GameConfig
     {
         public BoardSize BoardSize { get; set; }
-        public Difficulty Difficulty { get; set; }
 
-        public GameConfig(BoardSize boardSize, Difficulty difficulty)
+        public GameConfig(BoardSize boardSize)
         {
             BoardSize = boardSize;
-            Difficulty = difficulty;
         }
     }
 }

@@ -49,20 +49,36 @@ namespace grab_the_cheese.game
             // Difficulty menu
             Menu.PrintGameChoiceMenu();
 
-            Difficulty difficulty;
+            BoardSize boardSize;
             while (true)
             {
-                string key = Console.ReadKey(true).Key.ToString()[1].ToString();
+                string key = Console.ReadKey(true).Key.ToString();
 
-                if (Enum.TryParse<Difficulty>(key, out difficulty))
+                if (key.Length < 2)
                 {
-                    break;
+                    continue;
+                }
+
+                key = key[1].ToString();
+
+                int index;
+
+                if (int.TryParse(key, out index))
+                {
+                    var boardSizeValues = (BoardSize[])Enum.GetValues(typeof(BoardSize));
+
+                    if (index > 0 && index <= boardSizeValues.Length)
+                    {
+                        boardSize = boardSizeValues[index - 1];
+                        break;
+                    }
                 }
             }
+
             Console.Clear();
 
             // Configure and start game
-            this.Config = new GameConfig(BoardSize.MasterSplinterHideout, difficulty);
+            Config = new GameConfig(boardSize);
             Board = new Board(Config.BoardSize);
         }
 

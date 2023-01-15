@@ -56,7 +56,7 @@ namespace grab_the_cheese.game
 MOVE WITH THE ARROW KEYS
 TO PLAY
 
-Score {score}
+Score: {score}
 ";
 
             text = BuildTextBlock(text);
@@ -80,12 +80,12 @@ Score: {score}
         public void PrintGameChoiceMenu()
         {
             string text = @"
-Choose a difficulty
+Choose a board size
 
-1 - Easy
-2 - Normal
-3 - Hard
-4 - Master Splinter
+1 - Small
+2 - Medium
+3 - Large
+4 - Master Splinter's Hideout
 ";
             text = BuildTextBlock(text);
 

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="grab_the_cheese.game.FieldEntities.Chedar">
+    <Position X="23.25" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\FieldEntities\Chedar.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="grab_the_cheese.game.FieldEntities.Collectable">
+    <Position X="26" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\FieldEntities\Collectable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="grab_the_cheese.game.FieldEntities.Emental">
+    <Position X="26" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\FieldEntities\Emental.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="grab_the_cheese.game.FieldEntities.Gorgonzola">
+    <Position X="28.75" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\FieldEntities\Gorgonzola.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="grab_the_cheese.game.FieldEntities.Player" BaseTypeListCollapsed="true">
+    <Position X="25.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\FieldEntities\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="grab_the_cheese.game.FieldEntities.Poop" BaseTypeListCollapsed="true">
+    <Position X="28.25" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\FieldEntities\Poop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="grab_the_cheese.game.Board">
+    <Position X="10" Y="7" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAADAAEggAAAAAAAAAAAAAAAACQCAAAgAAAgAA=</HashCode>
+      <FileName>game\Board.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="grab_the_cheese.game.Game">
+    <Position X="10" Y="2.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAgACAAkCAAAAgAAgAAAKAAAAAAIAACAQAAA=</HashCode>
+      <FileName>game\Game.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="grab_the_cheese.game.GameConfig">
+    <Position X="20.25" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\GameConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="grab_the_cheese.game.MenuConfig">
+    <Position X="15" Y="2.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAQABAAAAAAAAAAAAARADABIAAQAAAAAAAAnIAA=</HashCode>
+      <FileName>game\MenuConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="grab_the_cheese.game.Statistics">
+    <Position X="20.25" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>game\Statistics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="grab_the_cheese.JsonFileOperationService&lt;T&gt;">
+    <Position X="14.75" Y="7" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAIBAAJAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>JsonFileOperationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="grab_the_cheese.interfaces.IFieldEntity">
+    <Position X="23.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>interfaces\IFieldEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="grab_the_cheese.enums.BoardSize">
+    <Position X="20.25" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>enums\BoardSize.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="grab_the_cheese.enums.MovementKey">
+    <Position X="20.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAIAAAAABAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>enums\MovementKey.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
